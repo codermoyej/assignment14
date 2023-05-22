@@ -1,0 +1,109 @@
+Ans: 1
+public function processForm(Request $request)
+{
+    // Retrieve the 'name' input field value from the request
+    $name = $request->input('name');
+
+    // Use the $name variable for further processing or storing in the database
+
+    // Redirect or return a response
+}
+
+Ans: 2
+
+use Illuminate\Http\Request;
+
+// Within your controller method or route callback
+public function processRequest(Request $request)
+{
+    // Retrieve the value of the 'User-Agent' header from the request
+    $userAgent = $request->header('User-Agent');
+
+    // Use the $userAgent variable for further processing or logging
+
+    // Return a response or perform other actions
+}
+
+Ans: 3
+
+use Illuminate\Http\Request;
+
+// Within your controller method or route callback
+public function processRequest(Request $request)
+{
+    // Retrieve the value of the 'page' query parameter from the request
+    $page = $request->query('page', null);
+
+    // Use the $page variable for further processing or handling
+}
+
+Ans: 4
+Ans: 4
+use Illuminate\Http\Response;
+
+// Within your controller method or route callback
+public function jsonResponse()
+{
+    $data = [
+        'name' => 'John Doe',
+        'age' => 25
+    ];
+
+    $response = [
+        'message' => 'Success',
+        'data' => $data
+    ];
+
+    return response()->json($response, Response::HTTP_OK);
+}
+
+Ans: 5
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+// Within your controller method or route callback
+public function handleFileUpload(Request $request)
+{
+    // Validate the request, if needed
+
+    if ($request->hasFile('avatar')) {
+        $file = $request->file('avatar');
+
+        // Store the uploaded file in the 'public/uploads' directory using the original filename
+        $path = $file->store('uploads', 'public');
+
+        // Return a response or perform other actions
+        return response()->json(['success' => true, 'message' => 'File uploaded successfully.']);
+    }
+
+    // Handle the case where no file was uploaded
+    return response()->json(['success' => false, 'message' => 'No file uploaded.']);
+}
+
+
+Ans: 6
+use Illuminate\Http\Request;
+
+// Within your controller method or route callback
+public function processRequest(Request $request)
+{
+    // Retrieve the value of the 'remember_token' cookie from the request
+    $rememberToken = $request->cookie('remember_token', null);
+
+    // Use the $rememberToken variable for further processing or handling
+}
+
+Ans: 7
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/submit', function (Request $request) {
+    // Retrieve the 'email' input parameter from the request
+    $email = $request->input('email');
+
+    // Process the email or perform any necessary actions with the $email variable
+
+    // Return a JSON response
+    return response()->json(['success' => true, 'message' => 'Form submitted successfully.']);
+});
